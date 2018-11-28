@@ -23,9 +23,8 @@ class App extends Component {
     }
   ],
 }
+  this.onNewPost = this.onNewPost.bind(this);
 }
-
-
 
 componentDidMount() {
   console.log("componentDidMount <App />");
@@ -39,6 +38,12 @@ componentDidMount() {
     this.setState({messages: messages})
   }, 3000);
 }
+
+  onNewPost(username, content) {
+    const newPost = {id:Date.now(), username: username, content: content};
+    const post = this.state.messages.concat(newPost);
+    this.setState({messages: post});
+  }
 
   render() {
 
@@ -55,7 +60,7 @@ componentDidMount() {
         </nav>
 
         <MessageList messages={this.state.messages}/>
-        <ChatBar currentUserName={this.state.currentUser.name}/>
+        <ChatBar onNewPost={this.onNewPost} currentUserName={this.state.currentUser.name}/>
       </body>
       </html>
     )
