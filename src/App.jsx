@@ -4,6 +4,8 @@ import MessageList from './MessageList.jsx';
 import Message from './Message.jsx'
 
 
+
+
 class App extends Component {
   constructor() {
   super();
@@ -27,6 +29,12 @@ class App extends Component {
 }
 
 componentDidMount() {
+  this.socket = new WebSocket("ws://localhost:3001")
+  this.socket.onopen = function (event) {
+    console.log('Connected to server')
+
+  };
+
   console.log("componentDidMount <App />");
   setTimeout(() => {
     console.log("Simulating incoming message");
@@ -43,6 +51,8 @@ componentDidMount() {
     const newPost = {id:Date.now(), username: username, content: content};
     const post = this.state.messages.concat(newPost);
     this.setState({messages: post});
+    console.log(this.socket);
+    this.socket.send(JSON.stringify(newPost));
   }
 
   render() {
