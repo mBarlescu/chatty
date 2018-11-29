@@ -15,6 +15,7 @@ class App extends Component {
     messages: [],
   };
   this.onNewPost = this.onNewPost.bind(this);
+  this.onUsernameChange = this.onUsernameChange.bind(this);
 }
 
 componentDidMount() {
@@ -58,13 +59,20 @@ componentDidMount() {
 //   }
 // }
 
-  onNewPost(username, content) {
-    const newPost = {id: '', username: username, content: content};
+  onNewPost(content) {
+    const newPost = {type: 'postMessage', username: this.state.currentUser.name, content: content};
     const post = this.state.messages.concat(newPost);
     // this.setState({messages: post});
-    this.setState({currentUser: newPost.username})
+    //this.setState({currentUser: newPost.username})
     console.log(this.socket);
     this.socket.send(JSON.stringify(newPost));
+  }
+  onUsernameChange(username) {
+    const newUsernameSend = {type:'postNotification', content: `${this.state.currentUser.name} has changed their username to ${username}.`}
+    this.socket.send(JSON.stringify(newUsernameSend))
+    const newUsername = {name: username};
+    this.setState({currentUser: newUsername});
+    console.log(this.state.currentUser);
   }
 
   render() {
@@ -82,7 +90,7 @@ componentDidMount() {
         </nav>
 
         <MessageList messages={this.state.messages}/>
-        <ChatBar onNewPost={this.onNewPost} currentUserName={this.state.currentUser.name}/>
+        <ChatBar onUsernameChange={this.onUsernameChange} onNewPost={this.onNewPost} currentUserName={this.state.currentUser.name}/>
       </body>
       </html>
     )
