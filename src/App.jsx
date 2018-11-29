@@ -25,14 +25,23 @@ componentDidMount() {
 
     this.socket.onmessage = ((event)=> {
       const message = JSON.parse(event.data);
-      console.log(message);
-      console.log(message.content)
-      const newMessages = this.state.messages.concat(message);
-      this.setState({messages: newMessages});
-      console.log(this.state)
-    });
-  });
+      switch(message.type){
+        case "incomingMessage":
+          const newMessages = this.state.messages.concat(message);
+          this.setState({messages: newMessages});
+          break;
+        case "incomingNotification":
+          const newNotification = this.state.messages.concat(message);
+          this.setState({messages: newNotification});
+          break;
+        default:
 
+          throw new Error("Unknown event type " + message.type);
+      }
+    });
+
+  })
+}
 
 
 
@@ -46,7 +55,7 @@ componentDidMount() {
   //   // Calling setState will trigger a call to render() in App and all child components.
   //   this.setState({messages: messages})
   // }, 3000);
-}
+
 
 // componentDidUpdate(){
 //   this.socket.onmessage = function(event) {
