@@ -19,7 +19,7 @@ onUsernameChange(event) {
 onUsernameChangeReal(event){
   const keycode = event.charCode;
   if(keycode === 13){
-    this.props.onUsernameChange(this.state.username);
+    this.props.onUsernameChange(this.state.username || 'anonymous');
   };
 }
 // if(keycode === 13){
