@@ -28,10 +28,10 @@ This boilerplate project includes React ESLint configuration.
 ```
 npm run lint
 ```
-## Screen Shots
+## Screenshots
 !["Screenshot of Chatty app, simple and clean."](https://github.com/mBarlescu/chatty/blob/master/docs/Screenshot%20from%202018-11-29%2020-52-22.png?raw=true)
 
-![Screenshot of Chatty app messages, and a user changing their username.](https://github.com/mBarlescu/chatty/blob/master/docs/Screenshot%20from%202018-11-29%2020-54-46.png?raw=true)
+!["Screenshot of Chatty app messages, and a user changing their username."](https://github.com/mBarlescu/chatty/blob/master/docs/Screenshot%20from%202018-11-29%2020-54-46.png?raw=true)
 
 ### Dependencies
 
