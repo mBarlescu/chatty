@@ -6,6 +6,7 @@ h1 {
   color: tomato;
 }
 
+
     body {
       background: white;
       color: black;
@@ -13,6 +14,8 @@ h1 {
       font-size: 14px;
       margin: 70px 0;
     }
+
+
 
     .chatbar {
       background: tomato;
@@ -24,6 +27,11 @@ h1 {
       position: fixed;
       right: 0;
 
+
+    }
+
+    .onlineUsers {
+      padding: 0 10px;
 
     }
 
@@ -67,8 +75,19 @@ h1 {
     }
 
     .message-username {
-      flex: 2;
+      /*flex: 2;*/
       font-weight: 700;
+    }
+
+    .notification {
+
+    }
+
+    .notification-content{
+      color: orange;
+      padding: 1rem;
+      font-style: italic;
+      font-size: 1.2rem;
     }
 
     .navbar {
@@ -80,6 +99,9 @@ h1 {
       position: fixed;
       right: 0;
       top: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
     .navbar-brand {

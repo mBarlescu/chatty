@@ -28,21 +28,30 @@ componentDidMount() {
     this.socket.onmessage = ((event)=> {
       console.log(event.data)
       const message = JSON.parse(event.data);
-      const newMessages = this.state.messages.concat(message);
-      this.setState({messages: newMessages});
-
-    this.socket.onclose = ((close) => {
-
+      switch(message.type){
+        case "incomingUsers":
+          const newUser = message.online;
+          this.setState({onlineUsers: newUser})
+          console.log(this.state)
+        case "incomingMessage":
+          const newMessages = this.state.messages.concat(message);
+          this.setState({messages: newMessages});
+          break;
+        case "incomingNotification":
+          const newNotification = this.state.messages.concat(message);
+          this.setState({messages: newNotification});
+          break;
+        default:
+          throw new Error("Unknown event type " + message.type);
+      }
     });
-    });
-  });
+  })
 }
+
 
   onNewPost(content) {
     const newPost = {type: 'postMessage', username: this.state.currentUser.name, content: content};
     const post = this.state.messages.concat(newPost);
-    // this.setState({messages: post});
-    //this.setState({currentUser: newPost.username})
     console.log(this.socket);
     this.socket.send(JSON.stringify(newPost));
   }
@@ -58,7 +67,7 @@ componentDidMount() {
 
     return (
       <div>
-        <Header/>
+        <Header onlineUsers={this.state.onlineUsers}/>
         <MessageList messages={this.state.messages}/>
         <ChatBar onUsernameChange={this.onUsernameChange} onNewPost={this.onNewPost} currentUserName={this.state.currentUser.name}/>
       </div>
