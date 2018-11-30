@@ -21,9 +21,9 @@ class App extends Component {
 
 componentDidMount() {
   this.socket = new WebSocket("ws://localhost:3001");
-  this.socket.onopen = ((on) => {
+  this.socket.onopen = ((conn) => {
     console.log('Connected to server');
-    console.log(on);
+
 
     this.socket.onmessage = ((event)=> {
       console.log(event.data)
