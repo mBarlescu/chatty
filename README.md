@@ -1,17 +1,9 @@
-React Boilerplate
+React Chatty
 =====================
 
 A minimal and light dev environment for ReactJS.
 
 ### Usage
-
-```
-git clone git@github.com:lighthouse-labs/react-simple-boilerplate.git
-cd react-simple-boilerplate
-git remote rm origin
-git remote add origin [YOUR NEW REPOSITORY]
-# Manually update your package.json file
-```
 
 Install the dependencies and start the server.
 
@@ -23,13 +15,6 @@ open http://localhost:3000 (you can open multiple tabs)
 chat away
 ```
 
-### Linting
-
-This boilerplate project includes React ESLint configuration.
-
-```
-npm run lint
-```
 ## Screenshots
 !["Screenshot of Chatty app, simple and clean."](https://github.com/mBarlescu/chatty/blob/master/docs/Screenshot%20from%202018-11-29%2020-52-22.png?raw=true)
 
