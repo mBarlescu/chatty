@@ -1,7 +1,7 @@
 React Chatty
 =====================
 
-A minimal and light dev environment for ReactJS.
+A simple chat platform on a websocket server
 
 ### Usage
 
