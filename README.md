@@ -10,7 +10,7 @@ Install the dependencies and start the server.
 ```
 npm install
 cd chatty_server and npm start
-then cd .. (back to the 'react-simple-boilerplate directory') and npm start
+then open a new terminal (back to the main 'react-simple-boilerplate' directory) and npm start
 open http://localhost:3000 (you can open multiple tabs)
 chat away
 ```
