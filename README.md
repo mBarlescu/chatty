@@ -1,7 +1,7 @@
 React Chatty
 =====================
 
-A simple chat platform on a websocket server
+A simple chat platform made with react on a websocket server
 
 ### Usage
 
